@@ -102,7 +102,7 @@ while (($s = fgets(STDIN)) !== FALSE) {
 		$l = $v = 0;
 		do {
 			preg_match('/^([0-9]*)([.])?(&)?(.*)/', $s, $a2);
-			$v = $a2[1] + 0;
+			$v = @$a2[1] + 0;
 			$s = $a2[4];
 			if (($a2[1] == "")||($a2[1] <= 0)) {
 				$l += $ch->l;
@@ -202,7 +202,7 @@ foreach ($eventlist as $t0 => $list) {
 	}
 	$out .= $s;
 }
-$out .= hex2bin("ff2f00");
+$out .= hex2bin("00ff2f00");
 
 print hex2bin("4d546864000000060000000101e0");
 $l = strlen($out);
